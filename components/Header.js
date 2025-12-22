@@ -53,8 +53,6 @@ export default function Header() {
           <Link href="/products">Products</Link>
           <Link href="#">Blog</Link>
           <Link href="/contact">Contact</Link>
-          <Link href="/cart">🛒</Link>
-          <Link href="#">Login / Sign Up</Link>
         </div>
       )}
     </header>
