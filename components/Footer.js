@@ -4,7 +4,6 @@ export default function Footer() {
       <div className="mb-2 space-x-2">
         <a href="/about">About</a>|
         <a href="/products">Shop</a>|
-        <a href="#">Blog</a>|
         <a href="#">Privacy Policy</a>|
         <a href="#">Return Policy</a>
       </div>

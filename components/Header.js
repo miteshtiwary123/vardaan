@@ -32,8 +32,6 @@ export default function Header() {
         {/* Right Links */}
         <div className="hidden md:flex items-center gap-7 text-[20px] font-semibold text-green-600">
           <Link href="#" className="hover:text-green-800 transition">Blog</Link>
-          <Link href="/contact" className="hover:text-green-800 transition">Contact</Link>
-          <Link href="/cart" className="hover:text-green-800 transition">🛒 Cart</Link>
         </div>
 
         {/* Mobile Menu Button */}
@@ -51,8 +49,6 @@ export default function Header() {
           <Link href="/">Home</Link>
           <Link href="/about">About Us</Link>
           <Link href="/products">Products</Link>
-          <Link href="#">Blog</Link>
-          <Link href="/contact">Contact</Link>
         </div>
       )}
     </header>
