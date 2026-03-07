@@ -1,7 +1,7 @@
 'use client';
 
 import Navbar from "../components/Navbar";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, Variants } from "framer-motion";
 import { Phone, Mail, MapPin, Send, Leaf, CheckCircle } from "lucide-react";
 import { useState } from "react";
 
@@ -30,7 +30,7 @@ export default function ContactPage() {
   };
 
   // Staggered Animation Variants
-  const containerVariants = {
+  const containerVariants: Variants = {
     hidden: { opacity: 0 },
     show: {
       opacity: 1,
@@ -38,7 +38,7 @@ export default function ContactPage() {
     }
   };
 
-  const itemVariants = {
+  const itemVariants: Variants = {
     hidden: { opacity: 0, y: 30 },
     show: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 80, damping: 20 } }
   };
@@ -307,7 +307,7 @@ export default function ContactPage() {
 }
 
 // Helper Component for Contact Cards
-function ContactCard({ icon, title, detail, subdetail }: { icon: React.ReactNode, title: string, detail: string, subdetail: string }) {
+function ContactCard({ icon, title, detail, subdetail }: { icon: React.ReactNode, title: string, detail: React.ReactNode, subdetail: string }) {
   return (
     <motion.div 
       variants={{

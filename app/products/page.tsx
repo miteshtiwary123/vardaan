@@ -4,10 +4,28 @@ import { useState, useEffect } from "react";
 import Navbar from "../components/Navbar";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronDown, ShoppingBag, Sparkles, X, MessageCircle, Leaf } from "lucide-react";
+import { ShoppingBag, Sparkles, X, MessageCircle, Leaf } from "lucide-react";
 
-// --- 1. GAU CRAFT PRODUCTS (20 Items) ---
-const gauProducts = [
+// ==========================================
+// 1. THE TYPESCRIPT BLUEPRINT (The Fix!)
+// ==========================================
+interface Product {
+  id: number;
+  name: string;
+  price: string;
+  oldPrice?: string; // The '?' makes these completely optional
+  discount?: string;
+  extra?: string;
+  image: string;
+  description: string;
+}
+
+// ==========================================
+// 2. PRODUCT DATA
+// ==========================================
+
+// --- 1. GAU CRAFT PRODUCTS ---
+const gauProducts: Product[] = [
   { id: 1, name: "Cow Dung Diya", price: "199", oldPrice: "499", discount: "-60%", extra: "Pack of 5, ₹30 per diya", image: "/gau-craft/diya.jpg", description: "Perfect for daily puja and festive occasions. These 100% natural cow dung diyas purify the air when burnt." },
   { id: 2, name: "Cow Dung Puja Thali", price: "799", oldPrice: "840", discount: "-15%", extra: "", image: "/gau-craft/thali.jpg", description: "An elegantly crafted puja thali made entirely from holy cow dung. Ideal for offering aarti." },
   { id: 3, name: "Cow Dung Laxmi Charan", price: "499", oldPrice: "699", discount: "-28%", extra: "", image: "/gau-craft/laxmi.jpg", description: "Invite prosperity and auspiciousness into your home with these sacred Laxmi footprints." },
@@ -30,8 +48,8 @@ const gauProducts = [
   { id: 20, name: "Cow Dung Ganesh (Small)", price: "499", oldPrice: "699", discount: "-30%", extra: "", image: "/gau-craft/ganesh-small.jpg", description: "A lovely, compact idol of Ganpati Bappa. Highly detailed and perfect for small mandirs." }
 ];
 
-// --- 2. LADDU PRODUCTS (7 Items) ---
-const ladduProducts = [
+// --- 2. LADDU PRODUCTS ---
+const ladduProducts: Product[] = [
   { id: 21, name: "Gond Laddu (Edible Laddu) (1kg)", price: "800", image: "/laddus/gond.jpg", description: "Traditional energy-boosting laddus made with edible gum, pure desi ghee, and premium dry fruits." },
   { id: 22, name: "Sugar Free Mushroom Biscuit (100g)", price: "120", image: "/laddus/mushroom.jpg", description: "Healthy, sugar-free biscuits infused with the nutritional goodness of mushrooms." },
   { id: 23, name: "Tila Laddu (1Kg)", price: "600", image: "/laddus/tila.jpg", description: "Authentic sesame seed (til) and jaggery laddus. Rich in calcium and iron." },
@@ -41,8 +59,8 @@ const ladduProducts = [
   { id: 27, name: "Dry Fruit Laddu (100g)", price: "150", image: "/laddus/dry-fruit.jpg", description: "Premium laddus packed entirely with roasted nuts, seeds, and natural sweetness." }
 ];
 
-// --- 3. HERBAL PRODUCTS (6 Items) ---
-const herbalProducts = [
+// --- 3. HERBAL PRODUCTS ---
+const herbalProducts: Product[] = [
   { id: 28, name: "Vardaan Desi Khand (1Kg)", price: "150", image: "/herbal/desi-khand.jpg", description: "A raw, unrefined, and chemical-free natural sweetener. The perfect healthy replacement for processed white sugar in your daily life." },
   { id: 29, name: "Vardaan Sendha Namak (1Kg)", price: "100", image: "/herbal/sendha-namak.jpg", description: "Pure Himalayan pink rock salt, loaded with essential trace minerals to regulate blood pressure and improve digestion naturally." },
   { id: 30, name: "Vardaan Divya Pey (100g)", price: "150", image: "/herbal/divya-pey.jpg", description: "A revitalizing herbal infusion blend. Sip on the healing properties of ancient Indian herbs to detoxify your body and calm your mind." },
@@ -51,11 +69,15 @@ const herbalProducts = [
   { id: 33, name: "Vardaan Nashya", price: "400", image: "/herbal/nashya.jpg", description: "Traditional Ayurvedic nasal drops formulated to clear the sinuses, relieve stress, and promote mental clarity and deep sleep." }
 ];
 
+// ==========================================
+// 3. MAIN COMPONENT
+// ==========================================
 export default function ProductsPage() {
   const [activeCategory, setActiveCategory] = useState<'gau' | 'laddu' | 'herbal'>('gau');
-  const [selectedProduct, setSelectedProduct] = useState<any>(null);
+  
+  // Notice we now use <Product | null> instead of <any>
+  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
 
-  // This is the new block that "listens" to the links from your home page!
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
     const category = params.get("category");
@@ -64,8 +86,8 @@ export default function ProductsPage() {
     }
   }, []);
 
-  // Dynamic variables based on which button is clicked
-  let currentProducts, heroTitle, heroSubtitle, heroBadge, badgeIcon;
+  // Explicitly typing these variables prevents any downstream errors
+  let currentProducts: Product[], heroTitle: string, heroSubtitle: string, heroBadge: string, badgeIcon: React.ReactNode;
 
   if (activeCategory === 'gau') {
     currentProducts = gauProducts;
