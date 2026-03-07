@@ -26,26 +26,26 @@ interface Product {
 
 // --- 1. GAU CRAFT PRODUCTS ---
 const gauProducts: Product[] = [
-  { id: 1, name: "Cow Dung Diya", price: "199", oldPrice: "499", discount: "-60%", extra: "Pack of 5, ₹30 per diya", image: "/gau-craft/diya.jpg", description: "Perfect for daily puja and festive occasions. These 100% natural cow dung diyas purify the air when burnt." },
-  { id: 2, name: "Cow Dung Puja Thali", price: "799", oldPrice: "840", discount: "-15%", extra: "", image: "/gau-craft/thali.jpg", description: "An elegantly crafted puja thali made entirely from holy cow dung. Ideal for offering aarti." },
+  { id: 1, name: "Cow Dung Diya", price: "199", oldPrice: "499", discount: "-60%", extra: "Pack of 5", image: "/gau-craft/diya.jpg", description: "Perfect for daily puja and festive occasions. These 100% natural cow dung diyas purify the air when burnt." },
+  { id: 2, name: "Cow Dung Puja Thali", price: "1,399", oldPrice: "1,599", discount: "-13%", extra: "", image: "/gau-craft/thali.jpg", description: "An elegantly crafted puja thali made entirely from holy cow dung. Ideal for offering aarti." },
   { id: 3, name: "Cow Dung Laxmi Charan", price: "499", oldPrice: "699", discount: "-28%", extra: "", image: "/gau-craft/laxmi.jpg", description: "Invite prosperity and auspiciousness into your home with these sacred Laxmi footprints." },
-  { id: 4, name: "Cow Dung Shivling", price: "3,999", oldPrice: "5,999", discount: "-30%", extra: "", image: "/gau-craft/shivling.jpg", description: "Experience deep spiritual resonance with this meticulously handcrafted cow dung Shivling." },
+  { id: 4, name: "Cow Dung Shivling", price: "1,200", oldPrice: "1,500", discount: "-20%", extra: "", image: "/gau-craft/shivling.jpg", description: "Experience deep spiritual resonance with this meticulously handcrafted cow dung Shivling." },
   { id: 5, name: "Cow Dung Toran", price: "399", oldPrice: "499", discount: "-20%", extra: "", image: "/gau-craft/toran.jpg", description: "Welcome guests and divine energy with this beautiful, eco-friendly toran." },
   { id: 6, name: "Cow Dung Ganesh Ji", price: "3,999", oldPrice: "5,999", discount: "-30%", extra: "", image: "/gau-craft/ganesh.jpg", description: "A magnificent idol of Lord Ganesha, crafted entirely from pure cow dung." },
   { id: 7, name: "Cow Dung Clock", price: "999", oldPrice: "1,299", discount: "-23%", extra: "", image: "/gau-craft/clock.jpg", description: "Blend tradition with utility. This beautiful wall clock features authentic Indian motifs." },
-  { id: 8, name: "Cow Dung Phone Stand", price: "199", oldPrice: "499", discount: "-60%", extra: "", image: "/gau-craft/stand.jpg", description: "A sustainable addition to your desk. Keep your phone secure while supporting rural artisans." },
-  { id: 9, name: "Cow Dung Jhummer", price: "499", oldPrice: "699", discount: "-30%", extra: "", image: "/gau-craft/jhummer.jpg", description: "Elevate your home decor with this traditional hanging jhummer." },
-  { id: 10, name: "Cow Dung Shree Yantra", price: "899", oldPrice: "1,299", discount: "-31%", extra: "", image: "/gau-craft/shree-yantra.jpg", description: "A powerful geometric symbol of cosmic energy, carefully structured from pure cow dung." },
+  { id: 8, name: "Cow Dung Phone Stand", price: "499", oldPrice: "699", discount: "-29%", extra: "", image: "/gau-craft/stand.jpg", description: "A sustainable addition to your desk. Keep your phone secure while supporting rural artisans." },
+  { id: 9, name: "Cow Dung Jhummer", price: "249", oldPrice: "349", discount: "-29%", extra: "", image: "/gau-craft/jhummer.jpg", description: "Elevate your home decor with this traditional hanging jhummer." },
+  { id: 10, name: "Cow Dung Shree Yantra", price: "399", oldPrice: "499", discount: "-20%", extra: "", image: "/gau-craft/shree-yantra.jpg", description: "A powerful geometric symbol of cosmic energy, carefully structured from pure cow dung." },
   { id: 11, name: "Cow Dung Dholak", price: "1,299", oldPrice: "1,599", discount: "-19%", extra: "", image: "/gau-craft/dholak.jpg", description: "A beautiful decorative dholak that celebrates Indian musical heritage." },
   { id: 12, name: "Cow Dung Mala", price: "899", oldPrice: "999", discount: "-10%", extra: "", image: "/gau-craft/mala.jpg", description: "Sacred chanting beads crafted from treated cow dung. Lightweight and natural." },
   { id: 13, name: "Cow Dung Tulsi Vrindavan", price: "299", oldPrice: "499", discount: "-40%", extra: "", image: "/gau-craft/tulsi.jpg", description: "A miniature sacred planter designed specifically for your holy Tulsi plant." },
   { id: 14, name: "Cow Dung Baithak (Small)", price: "399", oldPrice: "599", discount: "-43%", extra: "", image: "/gau-craft/baithak-small.jpg", description: "A sturdy, beautifully painted sacred platform (asan) for placing your smaller deities." },
   { id: 15, name: "Cow Dung Baithak (Medium)", price: "599", oldPrice: "799", discount: "-25%", extra: "", image: "/gau-craft/baithak-medium.jpg", description: "An elegantly crafted medium-sized asan, perfect for your daily idols." },
-  { id: 16, name: "Cow Dung Baithak (Large)", price: "699", oldPrice: "999", discount: "-30%", extra: "", image: "/gau-craft/baithak-large.jpg", description: "Our largest sacred platform, designed to hold grand idols or multiple deities." },
+  { id: 16, name: "Cow Dung Baithak (Large)", price: "999", oldPrice: "1299", discount: "-23%", extra: "", image: "/gau-craft/baithak-large.jpg", description: "Our largest sacred platform, designed to hold grand idols or multiple deities." },
   { id: 17, name: "Cow Dung Flower Pot", price: "499", oldPrice: "699", discount: "-30%", extra: "", image: "/gau-craft/flower-pot.jpg", description: "A breathable, 100% biodegradable planter that naturally enriches the soil." },
   { id: 18, name: "Cow Dung Toran", price: "399", oldPrice: "499", discount: "-20%", extra: "", image: "/gau-craft/toran-2.jpg", description: "An exquisite variant of our eco-friendly door hangings, featuring traditional mirror-work." },
   { id: 19, name: "Cow Dung Clock (Small)", price: "699", oldPrice: "899", discount: "-22%", extra: "", image: "/gau-craft/clock-small.jpg", description: "A compact version of our eco-friendly wall clock. Perfectly sized for smaller rooms." },
-  { id: 20, name: "Cow Dung Ganesh (Small)", price: "499", oldPrice: "699", discount: "-30%", extra: "", image: "/gau-craft/ganesh-small.jpg", description: "A lovely, compact idol of Ganpati Bappa. Highly detailed and perfect for small mandirs." }
+  { id: 20, name: "Cow Dung Ganesh (Small)", price: "199", oldPrice: "299", discount: "-33%", extra: "", image: "/gau-craft/ganesh-small.jpg", description: "A lovely, compact idol of Ganpati Bappa. Highly detailed and perfect for small mandirs." }
 ];
 
 // --- 2. LADDU PRODUCTS ---
