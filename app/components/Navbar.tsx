@@ -3,97 +3,129 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Facebook, Youtube, Instagram } from 'lucide-react';
+import { usePathname } from 'next/navigation';
+import { FaWhatsapp, FaInstagram, FaYoutube, FaTimes } from 'react-icons/fa';
+import { HiOutlineMenuAlt4 } from 'react-icons/hi';
 
 export default function Navbar() {
-  // This is the "brain" that remembers if the mobile menu is open or closed
   const [isOpen, setIsOpen] = useState(false);
+  const pathname = usePathname();
 
-  // A quick helper function to close the menu when someone clicks a link
-  const closeMenu = () => setIsOpen(false);
+  const navLinks = [
+    { name: 'HOME', href: '/' },
+    { name: 'ABOUT US', href: '/about' },
+    { name: 'PRODUCTS', href: '/products' },
+    { name: 'ACHIEVEMENTS', href: '/achievements' },
+    { name: 'FOUNDERS', href: '/founders' },
+    { name: 'IMPACT', href: '/impact' },
+    { name: 'BLOG', href: '/blog' },
+    { name: 'CONTACT US', href: '/contact' },
+  ];
 
   return (
-    // The dark forest green background from your design
-    <nav className="w-full bg-[#1A3626] text-[#F4EFE6] fixed top-0 left-0 right-0 z-50 shadow-lg font-[family-name:var(--font-playfair)]">
-      
-      {/* ==================== DESKTOP & TOP BAR ==================== */}
-      <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-        
-        {/* Left Side: Brand Name */}
-        <Link href="/" className="text-2xl md:text-3xl font-bold italic tracking-wide z-50">
-          Vardaan Enterprises
-        </Link>
-
-        {/* Center: Desktop Links & Logo (Hidden on Mobile!) */}
-        <div className="hidden md:flex items-center gap-10 text-sm font-[family-name:var(--font-inter)] tracking-wider font-medium">
-          <Link href="/" className="hover:text-[#D0C5B5] transition-colors">Home</Link>
-          <Link href="/about" className="hover:text-[#D0C5B5] transition-colors">About Us</Link>
-
-          {/* The Center Floating Logo */}
-          <Link href="/" className="relative w-24 h-24 bg-white rounded-full border-4 border-[#1A3626] shadow-xl flex items-center justify-center translate-y-6 hover:scale-105 transition-transform duration-300">
-            {/* Make sure logo.png is in your public folder! */}
-            <Image src="/logo.png" alt="Vardaan Enterprises Logo" fill className="object-cover rounded-full p-1" />
+    <header className="relative grid grid-cols-3 items-center px-6 lg:px-12 py-5 border-b border-[#2C3834] z-30 bg-[#1A2421]">
+      {/* Desktop Links Left */}
+      <nav className="hidden xl:flex items-center space-x-5 text-[11px] font-semibold tracking-wider text-[#D1C9BE]">
+        {navLinks.slice(0, 4).map((link) => (
+          <Link
+            key={link.href}
+            href={link.href}
+            className={`transition ${pathname === link.href ? 'text-[#C5A880]' : 'hover:text-white'}`}
+          >
+            {link.name}
           </Link>
+        ))}
+      </nav>
 
-          <Link href="/products" className="hover:text-[#D0C5B5] transition-colors">Products</Link>
-          <Link href="/contact" className="hover:text-[#D0C5B5] transition-colors">Contact Us</Link>
+      {/* Brand Logo / Centered */}
+      <div className="col-span-2 xl:col-span-1 flex justify-start xl:justify-center items-center">
+        <Link href="/" className="flex items-center space-x-3 group">
+          <Image src="/logo.png" alt="Logo" width={28} height={28} />
+          <span className="font-serif italic text-xl lg:text-2xl tracking-wide text-[#E6D5C3] group-hover:opacity-95 transition">
+            Vardaan Enterprises
+          </span>
+        </Link>
+      </div>
+
+      {/* Desktop Links Right + Socials + Order */}
+      <div className="hidden xl:flex items-center justify-end space-x-5 text-[11px] font-semibold tracking-wider text-[#D1C9BE]">
+        {navLinks.slice(4).map((link) => (
+          <Link
+            key={link.href}
+            href={link.href}
+            className={`transition ${pathname === link.href ? 'text-[#C5A880]' : 'hover:text-white'}`}
+          >
+            {link.name}
+          </Link>
+        ))}
+        
+        <div className="flex items-center space-x-2.5 text-sm text-[#C5A880] pl-2 border-l border-[#2C3834]">
+          <a href="https://youtube.com" target="_blank" rel="noreferrer" className="hover:text-white transition transform hover:scale-110"><FaYoutube /></a>
+          <a href="https://instagram.com" target="_blank" rel="noreferrer" className="hover:text-white transition transform hover:scale-110"><FaInstagram /></a>
         </div>
 
-        {/* Right Side: Desktop Social Icons (Hidden on Mobile!) */}
-        <div className="hidden md:flex items-center gap-4">
-          <a href="#" className="w-8 h-8 rounded-full bg-[#1877F2] flex items-center justify-center text-white hover:scale-110 transition-transform">
-            <Facebook size={16} />
-          </a>
-          <a href="https://www.youtube.com/@Vardaanenterprises" className="w-8 h-8 rounded-full bg-[#FF0000] flex items-center justify-center text-white hover:scale-110 transition-transform">
-            <Youtube size={16} />
-          </a>
-          <a href="https://www.instagram.com/vardaan.enterprises?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" className="w-8 h-8 rounded-full bg-gradient-to-tr from-[#F58529] via-[#DD2A7B] to-[#8134AF] flex items-center justify-center text-white hover:scale-110 transition-transform">
-            <Instagram size={16} />
-          </a>
-        </div>
-
-        {/* Mobile Hamburger Button (Hidden on Desktop!) */}
-        <button 
-          className="md:hidden text-[#F4EFE6] p-2 focus:outline-none z-50" 
-          onClick={() => setIsOpen(!isOpen)}
+        <Link 
+          href="/order" 
+          className="bg-[#C5A880] text-[#1A2421] px-4 py-2 rounded-full font-bold text-xs flex items-center space-x-2 hover:bg-[#b5956e] transition-all duration-300 shadow-md transform hover:-translate-y-0.5"
         >
-          {isOpen ? <X size={32} /> : <Menu size={32} />}
+          <FaWhatsapp />
+          <span>ORDER</span>
+        </Link>
+      </div>
+
+      {/* Professional Alternative Trigger (Replaces classic hamburger) */}
+      <div className="flex justify-end xl:hidden">
+        <button 
+          onClick={() => setIsOpen(!isOpen)} 
+          className="group flex items-center space-x-2 bg-[#2C3834]/60 hover:bg-[#2C3834] border border-[#3E4D47] text-[#C5A880] px-3.5 py-2 rounded-full transition-all duration-300 shadow-sm"
+          aria-label="Toggle Menu"
+        >
+          <span className="text-[10px] font-bold tracking-widest uppercase text-[#D1C9BE] group-hover:text-white transition-colors">
+            {isOpen ? 'CLOSE' : 'MENU'}
+          </span>
+          <div className="text-lg">
+            {isOpen ? <FaTimes /> : <HiOutlineMenuAlt4 />}
+          </div>
         </button>
       </div>
 
-      {/* ==================== MOBILE SLIDE-DOWN MENU ==================== */}
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "100vh" }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.4, ease: "easeInOut" }}
-            className="md:hidden absolute top-20 left-0 w-full bg-[#1A3626] border-t border-white/10 overflow-hidden flex flex-col"
+      {/* Elegant Full-Screen Overlay Dropdown Menu */}
+      <div className={`absolute top-full left-0 w-full bg-[#1A2421] border-b border-[#2C3834] py-8 px-8 flex flex-col space-y-5 xl:hidden z-50 shadow-2xl transition-all duration-300 ease-in-out ${
+        isOpen ? 'opacity-100 scale-y-100 visible' : 'opacity-0 scale-y-0 invisible h-0 py-0 overflow-hidden'
+      }`}>
+        <div className="text-[10px] uppercase tracking-widest text-[#8C6D48] font-bold pb-2 border-b border-[#2C3834]">
+          Navigation Menu
+        </div>
+        
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          {navLinks.map((link) => (
+            <Link 
+              key={link.href}
+              href={link.href} 
+              onClick={() => setIsOpen(false)} 
+              className={`text-sm py-1.5 transition-colors ${pathname === link.href ? 'text-[#C5A880] font-semibold' : 'text-[#D1C9BE] hover:text-white'}`}
+            >
+              {link.name}
+            </Link>
+          ))}
+        </div>
+
+        <div className="pt-4 border-t border-[#2C3834] flex items-center justify-between">
+          <div className="flex items-center space-x-4 text-base text-[#C5A880]">
+            <a href="https://youtube.com" target="_blank" rel="noreferrer" className="hover:text-white transition"><FaYoutube /></a>
+            <a href="https://instagram.com" target="_blank" rel="noreferrer" className="hover:text-white transition"><FaInstagram /></a>
+          </div>
+
+          <Link 
+            href="/order"
+            onClick={() => setIsOpen(false)} 
+            className="bg-[#C5A880] text-[#1A2421] px-5 py-2 rounded-full font-bold text-xs flex items-center space-x-2 hover:bg-[#b5956e] transition shadow-md"
           >
-            <div className="flex flex-col items-center justify-center flex-grow gap-8 font-[family-name:var(--font-inter)] pt-10 pb-32">
-              <Link href="/" onClick={closeMenu} className="text-2xl font-medium tracking-wide hover:text-[#D0C5B5] transition-colors">Home</Link>
-              <Link href="/about" onClick={closeMenu} className="text-2xl font-medium tracking-wide hover:text-[#D0C5B5] transition-colors">About Us</Link>
-              <Link href="/products" onClick={closeMenu} className="text-2xl font-medium tracking-wide hover:text-[#D0C5B5] transition-colors">Products</Link>
-              <Link href="/contact" onClick={closeMenu} className="text-2xl font-medium tracking-wide hover:text-[#D0C5B5] transition-colors">Contact Us</Link>
-              
-              {/* Mobile Social Icons */}
-              <div className="flex items-center justify-center gap-6 mt-8 pt-8 border-t border-white/20 w-3/4">
-                <a href="#" className="p-3 rounded-full bg-[#1877F2] text-white">
-                  <Facebook size={20} />
-                </a>
-                <a href="#" className="p-3 rounded-full bg-[#FF0000] text-white">
-                  <Youtube size={20} />
-                </a>
-                <a href="#" className="p-3 rounded-full bg-gradient-to-tr from-[#F58529] via-[#DD2A7B] to-[#8134AF] text-white">
-                  <Instagram size={20} />
-                </a>
-              </div>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </nav>
+            <FaWhatsapp />
+            <span>ORDER NOW</span>
+          </Link>
+        </div>
+      </div>
+    </header>
   );
 }
