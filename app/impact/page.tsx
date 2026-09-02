@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
+import { motion, type Variants } from "framer-motion";
 import { FaWhatsapp, FaInstagram, FaYoutube, FaBars, FaTimes, FaPhoneAlt, FaEnvelope, FaArrowRight, FaShieldAlt, FaHeart, FaHandsHelping, FaGlobe } from 'react-icons/fa';
 
 export default function Impact() {
@@ -18,7 +18,7 @@ export default function Impact() {
     },
   };
 
-  const itemVariants = {
+  const itemVariants: Variants = {
     hidden: { opacity: 0, y: 30 },
     visible: { 
       opacity: 1, 

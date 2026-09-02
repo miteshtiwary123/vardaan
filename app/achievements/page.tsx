@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
+import { motion, type Variants } from 'framer-motion';
 import { FaWhatsapp, FaInstagram, FaYoutube, FaBars, FaTimes, FaPhoneAlt, FaEnvelope, FaAward, FaTrophy, FaUsers, FaStar, FaLeaf, FaChartLine, FaShieldAlt, FaQuoteLeft, FaArrowRight } from 'react-icons/fa';
 
 export default function Achievements() {
@@ -19,7 +19,7 @@ export default function Achievements() {
     },
   };
 
-  const itemVariants = {
+  const itemVariants: Variants = {
     hidden: { opacity: 0, y: 30 },
     visible: { 
       opacity: 1, 
